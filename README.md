@@ -4,7 +4,7 @@ This is a project used to showcase an assessment task where I had to create depl
 machines). The application that I had to deploy is [the ToDo app from Docker's website](https://docs.docker.com/get-started/02_our_app/). 
 
 
-#####**A video** of the controller node with Ansible and the remote VM target **[can be found here](https://youtu.be/5JlXS67otDc)**. 
+##### **A video** of the controller node with Ansible and the remote VM target **[can be found here](https://youtu.be/5JlXS67otDc)**. 
 
 Unfortunately, I didn't know where I can get an online VM from, in order to just share the link with it. I had to go with VirtualBox and classic VMs.
 
