@@ -1,0 +1,52 @@
+- hosts: centos
+  become: true
+  tasks: 
+  - name: Install Docker
+    ansible.builtin.shell: cd ~ && curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+
+  - name: Start docker
+    service: 
+      name: docker
+      state: started
+      enabled: yes
+
+  - name: Install git
+    ansible.builtin.yum:
+      name: git
+      state: latest
+
+  - name: Clone app repo
+    git:
+      repo: https://github.com/docker/getting-started.git
+      dest: /home/catalin7331/todoapp
+      clone: yes
+      update: yes
+      force: yes
+
+  - name: Copy docker-compose file
+    ansible.builtin.copy:
+      src: /home/catalin7331/docker-compose.yml
+      dest: /home/catalin7331/todoapp/
+
+  - name: Change port using inventory var
+    ansible.builtin.replace: 
+      path: /home/catalin7331/todoapp/docker-compose.yml
+      regexp: '3000:'
+      replace: '{{port}}:'
+
+  - name: Docker compose up 
+    ansible.builtin.shell: docker compose up -d
+    args:
+      chdir: /home/catalin7331/todoapp
+
+  # I had to comment this because it didn't work properly on CentOS7. I went with the version above.
+  # - name: Docker compose up
+  #   docker_compose:
+  #     project_src: /home/catalin7331/todoapp/
+  #     state: present
+  #   vars:
+  #     ansible_python_interpreter: /usr/bin/python3.6
+
+
+
+
