@@ -10,6 +10,7 @@ Unfortunately, I didn't know where I can get an online VM from, in order to just
 For both the Ansible VM and for the target VM I have used CentOS 7. I had this image lying around in my computer `CentOS-7-x86_64-DVD-2009`.
 These are the settings that I installed the image with:
 ![setup vm screen](https://user-images.githubusercontent.com/22594116/223818846-cfac55ab-7197-431c-b877-fc4e863a9006.png)
+
 It was the most basic and minimal installation I could, since I needed a GUI for accesing Firefox, in order to see the app runing.
 
 The command I've used to run the playbook is:
